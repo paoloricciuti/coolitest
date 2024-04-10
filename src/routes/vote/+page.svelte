@@ -16,7 +16,6 @@
 			live_data = JSON.parse(e.data);
 		}
 		event_source.addEventListener('update-votes', listener);
-		event_source.addEventListener('open', () => console.log('open'));
 		return () => {
 			event_source.removeEventListener('update-votes', listener);
 		};
@@ -56,7 +55,6 @@
 		node.appendChild(line);
 		return {
 			update(new_val: typeof live_data) {
-				console.log(new_val.length);
 				for (let i = 0; i < new_val.length; i++) {
 					const value = new_val[i];
 					let rect = svg.rectangle(
