@@ -10,9 +10,7 @@ export function add_vote(id: string, vote: number) {
 	controllers.forEach((controller, key) => {
 		console.log({ key, id });
 		if (key !== id) {
-			controller?.enqueue(
-				`event: update-votes\ndata: ${JSON.stringify(Object.fromEntries(votes.entries()))}\n\n`
-			);
+			controller?.enqueue(`event: update-votes\ndata: ${JSON.stringify([...votes.values()])}\n\n`);
 		}
 	});
 }
